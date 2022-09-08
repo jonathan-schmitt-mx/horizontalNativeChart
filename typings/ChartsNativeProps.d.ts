@@ -4,11 +4,14 @@
  * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
+import { EditableValue, ListValue } from "mendix";
+import { Big } from "big.js";
 
 export interface ChartsNativeProps<Style> {
     name: string;
     style: Style[];
-    yourName: string;
+    listAttribute: EditableValue<Big>;
+    data: ListValue;
 }
 
 export interface ChartsNativePreviewProps {
@@ -16,5 +19,6 @@ export interface ChartsNativePreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    yourName: string;
+    listAttribute: string;
+    data: {} | { type: string } | null;
 }

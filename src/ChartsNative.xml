@@ -7,11 +7,22 @@
     <description>Configurable chart widget for native solutions</description>
     <icon/>
     <properties>
+
         <propertyGroup caption="General">
-            <property key="yourName" type="string" required="false">
+            <property key="listAttribute" type="attribute" datasource="data">
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                </attributeTypes>
                 <caption>Name</caption>
                 <description>Enter your name</description>
             </property>
+
+            <property key="data" type="datasource" isList="true">
+                <caption>Data Source (Sensor)</caption>
+                <description>Data Source for list of sensor from context object</description>
+            </property>
+
         </propertyGroup>
+
     </properties>
 </widget>
