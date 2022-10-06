@@ -27,6 +27,16 @@
                     <attributeType name="String"/>
                 </attributeTypes>
             </property>
+            <property key="topBarColor" type="expression" defaultValue="'#0CC'">
+                <caption>Top Bar Color</caption>
+                <description>Color of top bar</description>
+                    <returnType type="String"/>
+            </property>
+            <property key="bottomBarColor" type="expression" defaultValue="'#C0C'">
+                <caption>Bottom Bar Color</caption>
+                <description>Color of bottom bar</description>
+                    <returnType type="String"/>
+            </property>
         </propertyGroup>
     </properties>
 </widget>

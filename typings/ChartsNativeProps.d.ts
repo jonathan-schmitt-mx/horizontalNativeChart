@@ -4,7 +4,7 @@
  * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
-import { ListValue, ListAttributeValue } from "mendix";
+import { DynamicValue, ListValue, ListAttributeValue } from "mendix";
 import { Big } from "big.js";
 
 export interface ChartsNativeProps<Style> {
@@ -13,6 +13,8 @@ export interface ChartsNativeProps<Style> {
     data: ListValue;
     bignessAttribute: ListAttributeValue<Big>;
     qualAttribute: ListAttributeValue<string>;
+    topBarColor: DynamicValue<string>;
+    bottomBarColor: DynamicValue<string>;
 }
 
 export interface ChartsNativePreviewProps {
@@ -23,4 +25,6 @@ export interface ChartsNativePreviewProps {
     data: {} | { type: string } | null;
     bignessAttribute: string;
     qualAttribute: string;
+    topBarColor: string;
+    bottomBarColor: string;
 }
