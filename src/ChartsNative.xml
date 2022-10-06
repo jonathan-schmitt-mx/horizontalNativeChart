@@ -8,9 +8,24 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="yourName" type="string" required="false">
-                <caption>Name</caption>
-                <description>Enter your name</description>
+            <property key="data" type="datasource" isList="true">
+                <caption>Data Source</caption>
+                <description>Entity that holds chart data.</description>
+            </property>
+            <property key="bignessAttribute" type="attribute" dataSource="data">
+                <caption>Bigness Attribute</caption>
+                <description>Quantitative measure of bigness</description>
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="qualAttribute" type="attribute" dataSource="data">
+                <caption>Big Qual Attribute</caption>
+                <description>Qualitative measure of bigness</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
             </property>
         </propertyGroup>
     </properties>
