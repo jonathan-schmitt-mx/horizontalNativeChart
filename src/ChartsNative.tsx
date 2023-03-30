@@ -1,59 +1,82 @@
-// @ts-ignore
-import { ReactNode, createElement, useState, useEffect } from "react";
+import { createElement, useState, useEffect } from "react";
 import { TextStyle, ViewStyle, View, Text } from "react-native";
-
+// use react native animated library?
 import { Style } from "@mendix/pluggable-widgets-tools";
-
 import { ChartsNativeProps } from "../typings/ChartsNativeProps";
-import { ObjectItem } from "mendix";
+import { ChartXAxisComponent } from "./components/ChartXAxisComponent";
+import { BarListComponent } from "./components/BarListComponent";
 
 export interface CustomStyle extends Style {
     container: ViewStyle;
     label: TextStyle;
 }
 
-export const ChartsNative = (props: ChartsNativeProps<CustomStyle>): ReactNode => {
-    const { data, bignessAttribute, qualAttribute } = props;
-    //return (<View><Text style={{color: "#787", fontSize: 200}}>{JSON.stringify(data) + JSON.stringify(bignessAttribute)}</Text></View>);
-    const [maxBigness, setMaxBigness] = useState(1);
+export const ChartsNative = (props: ChartsNativeProps<CustomStyle>): JSX.Element => {
+    const {
+        data,
+        bignessAttribute,
+        qualAttribute,
+        topBarColor,
+        bottomBarColor,
+        xAxisLabel,
+        manualUpperBound,
+        manualLowerBound
+    } = props;
+
+    const [upperBound, setupperBound] = useState(1);
+    const [lowerBound, setlowerBound] = useState(0);
+    const [rangeCalculated, setRangeCalculated] = useState(false);
 
     useEffect(() => {
-        setMaxBigness(
-            data.items
-                ?.map(item => bignessAttribute.get(item).value)
-                .reduce((max, item) => (item?.gt(max || 0) ? item : max))
-                ?.toNumber() || 1
-        );
-    }, [data.status]);
-
-    function getPercentOfParent(listObject: ObjectItem): number {
-        return (bignessAttribute.get(listObject).value?.toNumber() || 0) / maxBigness;
-    }
+        if (data?.items) {
+            const numbersOfAmbigousRelativeBigness = data?.items.map(
+                item => bignessAttribute.get(item).value?.toNumber() || 0
+            );
+            setupperBound(
+                manualUpperBound?.value
+                    ? manualUpperBound.value?.toNumber()
+                    : Math.max(...numbersOfAmbigousRelativeBigness, 0)
+            );
+            setlowerBound(
+                manualLowerBound?.value
+                    ? manualLowerBound.value?.toNumber()
+                    : Math.min(...numbersOfAmbigousRelativeBigness, 0)
+            );
+            setRangeCalculated(true);
+        }
+    }, [data, data.items, bignessAttribute, manualLowerBound?.value, manualUpperBound?.value]);
 
     return (
-        <View >
-            {data.items?.map(item => (
-                <View key={item.id} style={{ flexDirection: "row", margin: 5 }}>
-                    <View
-                        style={{
-                            backgroundColor: "#0CC",
-                            borderRadius: 10,
-                            flex: getPercentOfParent(item),
-                            padding: 5,
-                            flexDirection: "row-reverse"
-                        }}
-                    >
-                        {getPercentOfParent(item) > 0.5 && (
-                            <Text style={{ color: "#333", fontSize: 16 }}>{qualAttribute.get(item).displayValue}</Text>
-                        )}
-                    </View>
-                    <View style={{ padding: 5, flexDirection: "row-reverse"}}>
-                        {getPercentOfParent(item) <= 0.5 && (
-                            <Text style={{ color: "#CCC", fontSize: 16 }}>{qualAttribute.get(item).displayValue}</Text>
-                        )}
-                    </View>
+        <View style={{ padding: 20 }}>
+            {data.items?.length === 0 && (
+                <Text style={{ color: "#333", fontSize: 16, textAlign: "center", padding: 3 }}>No items found...</Text>
+            )}
+            {data.items && rangeCalculated && (
+                <BarListComponent
+                    barList={data.items.map(item => {
+                        return {
+                            bigness:
+                                bignessAttribute.get(item).status === "available"
+                                    ? bignessAttribute.get(item).value?.toNumber() || 0
+                                    : 0,
+                            name: qualAttribute.get(item).value || "",
+                            id: item.id.toString() || ""
+                        };
+                    })}
+                    bottomBarColor={bottomBarColor.value?.toString() || "#0CC"}
+                    topBarColor={topBarColor.value?.toString() || "#C0C"}
+                    upperBound={upperBound}
+                    lowerBound={lowerBound}
+                />
+            )}
+            {(data.items?.length || 0) > 0 && (
+                <View>
+                    <ChartXAxisComponent lowerBound={lowerBound} upperBound={upperBound} />
+                    <Text style={{ color: "#333", fontSize: 16, textAlign: "center", padding: 3 }}>
+                        {xAxisLabel.value}
+                    </Text>
                 </View>
-            ))}
+            )}
         </View>
     );
 };

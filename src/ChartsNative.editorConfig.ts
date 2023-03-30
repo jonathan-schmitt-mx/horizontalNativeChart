@@ -32,26 +32,34 @@ type ObjectProperties = {
 };
 
 export function getProperties(_values: ChartsNativePreviewProps, defaultProperties: Properties): Properties {
-    // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
-    /* Example
-    if (values.myProperty === "custom") {
-        delete defaultProperties.properties.myOtherProperty;
+    if (_values.manualDomain === false) {
+        const configurationGroup = defaultProperties.find(property => property.caption === "Configuration");
+        if (configurationGroup && configurationGroup.properties) {
+            configurationGroup.properties = configurationGroup.properties.filter(
+                property => !property.key.endsWith("Bound")
+            );
+        }
     }
-    */
     return defaultProperties;
 }
 
 export function check(_values: ChartsNativePreviewProps): Problem[] {
     const errors: Problem[] = [];
-    // Add errors to the above array to throw errors in Studio and Studio Pro.
-    /* Example
-    if (values.myProperty !== "custom") {
+    if (
+        _values.manualUpperBound !== "" &&
+        _values.manualLowerBound !== "" &&
+        _values.manualUpperBound <= _values.manualLowerBound
+    ) {
         errors.push({
-            property: `myProperty`,
-            message: `The value of 'myProperty' is different of 'custom'.`,
-            url: "https://github.com/myrepo/mywidget"
+            property: `manualUpperBound`,
+            message: `Upper bound must be strictly greater than the lower bound.`
         });
     }
-    */
+    if (_values.manualDomain && (_values.manualLowerBound === "" || _values.manualUpperBound === "")) {
+        errors.push({
+            property: `manualDomain`,
+            message: `Upper and Lower bound required if manual domain is specified.`
+        });
+    }
     return errors;
 }
