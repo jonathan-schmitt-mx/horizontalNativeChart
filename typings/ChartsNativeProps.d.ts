@@ -13,8 +13,12 @@ export interface ChartsNativeProps<Style> {
     data: ListValue;
     bignessAttribute: ListAttributeValue<Big>;
     qualAttribute: ListAttributeValue<string>;
+    xAxisLabel: DynamicValue<string>;
     topBarColor: DynamicValue<string>;
     bottomBarColor: DynamicValue<string>;
+    manualDomain: boolean;
+    manualLowerBound?: DynamicValue<Big>;
+    manualUpperBound?: DynamicValue<Big>;
 }
 
 export interface ChartsNativePreviewProps {
@@ -25,6 +29,10 @@ export interface ChartsNativePreviewProps {
     data: {} | { type: string } | null;
     bignessAttribute: string;
     qualAttribute: string;
+    xAxisLabel: string;
     topBarColor: string;
     bottomBarColor: string;
+    manualDomain: boolean;
+    manualLowerBound: string;
+    manualUpperBound: string;
 }

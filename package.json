@@ -28,6 +28,8 @@
     "@types/react-native": "~0.63.52"
   },
   "dependencies": {
-
+    "chroma.ts": "^1.0.10",
+    "culori": "^2.0.3",
+    "intl": "^1.2.5"
   }
 }

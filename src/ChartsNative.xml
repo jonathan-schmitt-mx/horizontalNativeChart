@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="mendix.chartsnative.ChartsNative" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Native"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+<widget id="mendix.chartsnative.ChartsNative" pluginWidget="true" needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Native"
+    xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Charts Native</name>
     <description>Configurable chart widget for native solutions</description>
-    <icon/>
+    <icon />
     <properties>
         <propertyGroup caption="General">
             <property key="data" type="datasource" isList="true">
@@ -16,26 +17,47 @@
                 <caption>Bigness Attribute</caption>
                 <description>Quantitative measure of bigness</description>
                 <attributeTypes>
-                    <attributeType name="Decimal"/>
-                    <attributeType name="Integer"/>
+                    <attributeType name="Decimal" />
+                    <attributeType name="Integer" />
                 </attributeTypes>
             </property>
             <property key="qualAttribute" type="attribute" dataSource="data">
                 <caption>Big Qual Attribute</caption>
                 <description>Qualitative measure of bigness</description>
                 <attributeTypes>
-                    <attributeType name="String"/>
+                    <attributeType name="String" />
                 </attributeTypes>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Configuration">
+            <property key="xAxisLabel" type="expression" defaultValue="'X Axis'">
+                <caption>X Axis Label</caption>
+                <description>The label of your quantitative axis.</description>
+                <returnType type="String" />
             </property>
             <property key="topBarColor" type="expression" defaultValue="'#0CC'">
                 <caption>Top Bar Color</caption>
                 <description>Color of top bar</description>
-                    <returnType type="String"/>
+                <returnType type="String" />
             </property>
             <property key="bottomBarColor" type="expression" defaultValue="'#C0C'">
                 <caption>Bottom Bar Color</caption>
                 <description>Color of bottom bar</description>
-                    <returnType type="String"/>
+                <returnType type="String" />
+            </property>
+            <property key="manualDomain" type="boolean" defaultValue="false">
+                <caption>Set a domain for this chart</caption>
+                <description></description>
+            </property>
+            <property key="manualLowerBound" type="expression" required="false">
+                <caption>Domain Lower Bound</caption>
+                <description>Minimum value displayed by the chart.</description>
+                <returnType type="Integer" />
+            </property>
+            <property key="manualUpperBound" type="expression" required="false">
+                <caption>Domain Upper Bound</caption>
+                <description>Maximum value displayed by the chart.</description>
+                <returnType type="Integer" />
             </property>
         </propertyGroup>
     </properties>
