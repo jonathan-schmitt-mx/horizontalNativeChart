@@ -4,26 +4,26 @@
     supportedPlatform="Native"
     xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>Charts Native</name>
-    <description>Configurable chart widget for native solutions</description>
-    <icon />
+    <name>Horizontal Native Chart</name>
+    <description>Dynamic horizontal bar chart for native</description>
+    <icon>iVBORw0KGgoAAAANSUhEUgAAAG4AAABLCAMAAACm5EJMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJSUExURQWV2xme3ofM7rzj9cHl9r/k9pvV8DGn4SOi3+Lz+5XS8Eqy5USw5EWw5HjG7On2/E2z5azc83zH7D6t4+X0+wqX3PT6/RWc3dDr+Dir4hSb3c/r+Dmr4q7c83nG7Dys4ySi35LR70my5XbF60605Rqe3ojM7pzV8TKo4Q6Z3F2654HJ7YLK7XfF6yik4Nzw+rfg9YTL7YXL7czp+G7B6hed3tjv+U+05i2m4d/x+mK96Krb8z+u48fn9+74/R6g35PR733I7M7q+Deq4gaW22vA6tvv+v7+/////waV20ix5X7I7Lnh9dHr+InN7o3P76na8giW223B6vv9/guY3Mbn91S35kSv5Of1+1S25guX3BOb3e/4/XvH7CCg32m/6Tqr49rv+YDJ7f3+/1666LXf9N7x+mrA6Smk4M3q+N3x+u74/C6m4b7j9kex5ASHxyOWzjaf0g2LyQWHxz+j1EOl1QeIyBmRzCGVzUyp12i33Uen1lau2Uin1kqo1kup10Sl1Uan1jSe0kWm1QyLyW253mGz3HW94FGs2EGk1DOd0RqSzESm1ReQyxuSzDqh00Kl1QaIxzuf0HK43G632yaXz1qw2lmw2lCr2HK732+631Ws1kym0k2m0lSs1yqZz3vA4WCz2ymZzyCUzVSt2SKVzh6UzViv2U+r11Wt2Vqu1w+Hw0Wl1D6i1AeJyGm33S2a0F+y22K03Dyi0yWWzkmo1lyx2mS13FKs2Eyq1y6b0B2TzU2q12e23Viu2Giz2Wm02Vuw2TWe0hWPyxaQyxiRzOTnCQYAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALwSURBVGhD7diHU9NgHMZxFAVRoSgFy96jgAxxgBaQjVvEintvhTj6igy1UFREBPeeqDhw74Fb/i/fpE974HHNS5OXO718Di7fpi2/a5u3bfDQaDT/jBEjPUc5jfbyxm5OxviMHTfeyddP548r+JgwEQEB+kAUF0GTEA6GYAQXQSEIh9AwBBfhEQiI5PtkRvlEx+A4oXxjdXG4gpP4hP4LITEJu1VlTE5JTU2dzHmROaSlZ2TScdH6KdjBV9ZU+3ba9Bn24Co7B+ExcxaCJ1MuwiPGE8FTSF4+anYCgquCwqJiugmJ8Im37+CspLSsvLw8KDwKl4fPnLnz6JqQkZJsxM0VMs5fsBB/04XMjPQ03EGZRYsrUK4tyUIoo2N9+XKyEYpULkXIMZsQipiXIWTk5/39OeyWquUrViJdKC4qLEAqVGWupEtQRllpCW6ucS0bX1ScTKtwDQdpWTn4ouKUu3oNrlSdMR2f7P2tNaxDqS05AzHA+g0ItW0c9NtRxSaE2jZvQQxQVIpQm3HrNlQ/+YXcVvX2HTtxQDqZd6n0jjWo3VhuTqahvRsHBuN+soJVON3x1xvwrMgy6BWfG3vrAlAMAnRKT0u8/BBM/LwQ7qquQTCpqUa4KzEWwSQ2EeGuJF0kikGkTvHpapw+FAeerFC9CqfigWFYVrLCuP6bQaPRqEwYVto4hz1790nb/RZCyAEpBaGWkFokA/ZxB+vqGxoPiUXqGg4fsUo7haZmQWi22ZsB87iWo43HyPHWEzQJsf9SlraT1vZTHZ3SBQbM406foQOsgvhAxFFnz51vo2m7UH/xkk3ay4R53GVyhdCfqzTFcdeu37gppnDr9p0uumHEPM5y99797gfdD2mSR8T6uKfnCU36sCyWp13qP7pnz1+87Hr1WjxW3rx99x7jOjuEDx+FT+IryoR5nPC590trbzsuCF+/ff8hbm3ikdkk7WLBPo4uhZ8tKEH41U5+S9FHSJ8UTIYyTgX/8zhB+AONCigJiEKRUgAAAABJRU5ErkJggg==</icon>
     <properties>
         <propertyGroup caption="General">
             <property key="data" type="datasource" isList="true">
                 <caption>Data Source</caption>
-                <description>Entity that holds chart data.</description>
+                <description>Chart datasource</description>
             </property>
             <property key="bignessAttribute" type="attribute" dataSource="data">
-                <caption>Bigness Attribute</caption>
-                <description>Quantitative measure of bigness</description>
+                <caption>Value Attribute</caption>
+                <description>Size of bar</description>
                 <attributeTypes>
                     <attributeType name="Decimal" />
                     <attributeType name="Integer" />
                 </attributeTypes>
             </property>
             <property key="qualAttribute" type="attribute" dataSource="data">
-                <caption>Big Qual Attribute</caption>
-                <description>Qualitative measure of bigness</description>
+                <caption>Label Attribute</caption>
+                <description>Label of bar</description>
                 <attributeTypes>
                     <attributeType name="String" />
                 </attributeTypes>
@@ -32,31 +32,31 @@
         <propertyGroup caption="Configuration">
             <property key="xAxisLabel" type="expression" defaultValue="'X Axis'">
                 <caption>X Axis Label</caption>
-                <description>The label of your quantitative axis.</description>
+                <description />
                 <returnType type="String" />
             </property>
             <property key="topBarColor" type="expression" defaultValue="'#0CC'">
                 <caption>Top Bar Color</caption>
-                <description>Color of top bar</description>
+                <description>Expression should result in css compatible color or hex value</description>
                 <returnType type="String" />
             </property>
             <property key="bottomBarColor" type="expression" defaultValue="'#C0C'">
                 <caption>Bottom Bar Color</caption>
-                <description>Color of bottom bar</description>
+                <description>Expression should result in css compatible color or hex value</description>
                 <returnType type="String" />
             </property>
             <property key="manualDomain" type="boolean" defaultValue="false">
-                <caption>Set a domain for this chart</caption>
-                <description></description>
+                <caption>Manual Domain</caption>
+                <description>Enable custom domain, otherwise will automatically calculate bounds</description>
             </property>
             <property key="manualLowerBound" type="expression" required="false">
                 <caption>Domain Lower Bound</caption>
-                <description>Minimum value displayed by the chart.</description>
+                <description>Minimum value displayed by the chart</description>
                 <returnType type="Integer" />
             </property>
             <property key="manualUpperBound" type="expression" required="false">
                 <caption>Domain Upper Bound</caption>
-                <description>Maximum value displayed by the chart.</description>
+                <description>Maximum value displayed by the chart</description>
                 <returnType type="Integer" />
             </property>
         </propertyGroup>
